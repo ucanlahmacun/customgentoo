@@ -1,0 +1,10 @@
+net-libs/webkit-gtk ccache-enabled
+sys-devel/llvm ccache-enabled
+sys-devel/clang ccache-enabled
+www-client/firefox ccache-enabled
+mail-client/thunderbird ccache-enabled
+dev-qt/qtbase ccache-enabled
+dev-qt/qtdeclarative ccache-enabled
+dev-util/mingw64-toolchain ccache-enabled
+net-libs/nodejs ccache-enabled
+media-libs/mesa ccache-enabled
