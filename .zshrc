@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -102,27 +102,12 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 alias i3conf="sudo nano ~/.config/i3/config"
 alias polyconf="sudo nano ~/.config/polybar/config.ini"
 
-#Password-gen
-
-genpass() {
-    local random_factor
-    random_factor=$(date +"%Y%m%d%H%M%S%3N" | sha256sum | cut -c1-16 | tr -d "\n")
-    pwgen -yB 16 10 <<< "$random_factor" | tr ' ' '\n'
-}
-
-
-
-#Hist ignored commands
-hist_ignore=(genpass)
-
-#Aliases
-
-alias genpass="genpass"
-
-
 #PS1
 
-PS1='%F{white}%~ %(!.%F{red}#%F{white}.%F{white}$) %F{default}'
+#PS1='%F{white}%~ %(!.%F{red}#%F{white}.%F{white}$) %F{default}'
+
+# Start tmux on zsh launch
+[ -z "$TMUX" ] && command -v tmux &> /dev/null && exec tmux
 
 fortune -a -n 250 -s | cowsay | lolcat
 
