@@ -27,25 +27,27 @@ exec --no-startup-id dex --autostart --environment i3
 # they are included here as an example. Modify as you see fit.
 
 # Define the keyboard layouts
-
 exec --no-startup-id /home/dede/.config/i3/keymap.sh
 bindsym Mod1+Shift exec --no-startup-id /home/dede/.config/i3/keymap.sh
+#Polybar
 exec_always --no-startup-id /home/dede/.config/polybar/launch.sh
+#Wallpapers
 exec --no-startup-id nitrogen --random --set-scaled --save ~/wallpapers
+#Systrack
+exec --no-startup-id /home/dede/.prmtlogger/.timestamp.sh
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 bindsym $mod+l exec --no-startup-id i3lock -c 000000 -n  && sleep 1
-bindsym $mod+t exec --no-startup-id re.sonny.Tangram
-
+exec --no-startup-id xautolock -time 10 -locker "i3lock -c 000000 -n && sleep 1" 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Define keybinding for the popup menu
+# Power settings popup menu
 bindsym $mod+x exec --no-startup-id /home/dede/.config/i3/powermenu.sh
-#bindsym $mod+q exec --no-startup-id xtrlock 
-
+bindsym $mod+mod1+q exec --no-startup-id xtrlock 
+bindsym $mod+t exec --no-startup-id re.sonny.Tangram
 bindsym $mod+shift+w exec --no-startup-id firefox
 bindsym $mod+shift+f exec --no-startup-id thunar
 
@@ -66,13 +68,14 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty
-
+bindsym $mod+Return exec --no-startup-id  alacritty
+for_window [class="Alacritty"] fullscreen enable 
+#for_window [class="Alacritty"] move to workspace $ws1
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec_always --no-startup-id ~/.config/rofi/config.rasi |rofi -show drun
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
