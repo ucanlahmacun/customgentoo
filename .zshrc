@@ -107,10 +107,10 @@ alias caplog="cat ~/.prmtlogger/.mainlog"
 
 #PS1='%F{white}%~ %(!.%F{red}#%F{white}.%F{white}$) %F{default}'
 
-# Start tmux on zsh launch
+# Start tmux at start
 [ -z "$TMUX" ] && command -v tmux &> /dev/null && exec tmux
 
-fortune -a -n 250 -s | cowsay | lolcat
+fortune -a -n 100 -s | cowsay | lolcat
 
 
 
