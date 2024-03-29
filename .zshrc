@@ -103,6 +103,9 @@ alias i3conf="sudo nano ~/.config/i3/config"
 alias polyconf="sudo nano ~/.config/polybar/config.ini"
 alias forecast="~/misctools/forecast.sh"
 alias caplog="cat ~/.prmtlogger/.mainlog"
+alias genwatch="watch -c -t -n 5 genlop -c"
+alias ccwatch="watch -c -t -n 15 CCACHE_DIR=/var/cache/ccache ccache -s"
+
 #PS1
 
 #PS1='%F{white}%~ %(!.%F{red}#%F{white}.%F{white}$) %F{default}'
